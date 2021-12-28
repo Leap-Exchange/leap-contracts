@@ -9,7 +9,7 @@ contract Destination {
   // transferOwners: (transferData, transferID) => address owner
   // might change state map implementation in the future
   // mapping(struct => mapping(uint => address)) public transferOwners;
-	mapping(bytes => mapping(uint => address)) public transferOwners;
+  mapping(bytes => mapping(uint => address)) public transferOwners;
 
 
 
@@ -25,17 +25,17 @@ contract Destination {
   }
 
   function getLPFee(transferData, currentTime){
-		if (currentTime < startTime){
-			return currentTime
-		}
+    if (currentTime < startTime){
+      return currentTime
+    }
     else if (currentTime >= transferData.startTime + transferData.feeRampup){
-			return transferData.fee;
-		}
+      return transferData.fee;
+    }
     else{
-			// Note: this clause is unreachable if feeRampup == 0
-			// [TODO] Implement int divide '//' operator in solidity for return statement below
-			return transferData.fee * (currentTime - startTime) / transferData.feeRampUp; 
-		}
+      // Note: this clause is unreachable if feeRampup == 0
+      // [TODO] Implement int divide '//' operator in solidity for return statement below
+      return transferData.fee * (currentTime - startTime) / transferData.feeRampUp; 
+    }
     
   }
 
