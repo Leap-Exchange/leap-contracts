@@ -13,14 +13,14 @@ contract Source {
   // [TODO]: what's this?
   constant uint public CONTRACT_FEE_BASIS_POINTS;
 
-	struct TransferData { 
+  struct TransferData { 
     address tokenAddress
-	  address destination
+    address destination
     uint256 amount
-	  uint256 fee
+    uint256 fee
     uint256 startTime
     uint256 feeRampup
-	}
+  }
 
   modifier restricted() {
     require(
@@ -32,7 +32,7 @@ contract Source {
 
   constructor() public {
     nextTransferID = 0;
-		CONTRACT_FEE_BASIS_POINTS = 5;
+    CONTRACT_FEE_BASIS_POINTS = 5;
   }
 
   event TransferInitiated(transfer, transferID);
